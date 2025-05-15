@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+.mat-table {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+@media (max-width: 600px) {
+  .mat-form-field {
+    width: 100%;
+  }
+}

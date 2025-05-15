@@ -1,0 +1,87 @@
+/* results.component.scss */
+.table-container {
+  margin: 20px;
+  overflow-x: auto;
+  border: 1px solid rgb(68, 0, 255);
+  
+  mat-table {
+    width: 100%;
+    min-width: 600px; // Largura mínima para desktop
+
+    /* Header styling */
+    mat-header-row {
+      background-color: #f5f5f5;
+      
+      mat-header-cell {
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.87);
+        font-size: 14px;
+      }
+    }
+
+    /* Row styling */
+    mat-row {
+      &:hover {
+        background-color: black;
+        cursor: pointer;
+      }
+
+      mat-cell {
+        color: white;
+        font-size: 14px;
+        
+        /* Formatação de valores monetários */
+        &.valor-column {
+          text-align: right;
+          padding-right: 24px;
+        }
+      }
+    }
+
+    /* Colunas específicas */
+    .numero-column {
+      width: 120px;
+    }
+
+    .data-column {
+      width: 150px;
+    }
+  }
+}
+
+/* Responsividade para mobile */
+@media (max-width: 768px) {
+  .table-container {
+    margin: 10px;
+    
+    mat-table {
+      mat-header-cell,
+      mat-cell {
+        padding: 12px 8px;
+        font-size: 12px;
+      }
+
+      .numero-column {
+        width: 100px;
+      }
+
+      .data-column {
+        width: 120px;
+      }
+    }
+  }
+}
+
+/* Mensagem quando não há dados */
+.empty-state {
+  padding: 20px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+/* Loading state */
+.loading-shimmer {
+  padding: 20px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.54);
+}

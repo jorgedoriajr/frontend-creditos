@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: .
+    ports:
+      - "4200:80"
+    depends_on:
+      - json-server
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf  # Override NGINX config
+
+  json-server:
+    image: node:18
+    volumes:
+      - ./db.json:/data/db.json
+    command: npx json-server --watch /data/db.json --port 3000 --host 0.0.0.0
+    ports:
+      - "3000:3000"

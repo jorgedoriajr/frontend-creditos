@@ -1,0 +1,20 @@
+<!-- search.component.html -->
+<div class="search-container">
+  <form (ngSubmit)="onSearch()">
+    <div class="search-fields">
+      <mat-form-field appearance="fill">
+        <mat-label>Número da NFS-e</mat-label>
+        <input matInput [(ngModel)]="numeroNfse" name="numeroNfse">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Número do Crédito</mat-label>
+        <input matInput [(ngModel)]="numeroCredito" name="numeroCredito">
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" type="submit">
+      Buscar
+      <span *ngIf="loading" class="loading-indicator">...</span>
+    </button>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  </form>
+</div>

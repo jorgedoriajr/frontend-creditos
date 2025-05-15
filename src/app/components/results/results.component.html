@@ -1,0 +1,69 @@
+<!-- results.component.html -->
+<div class="table-container">
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Colunas -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.id }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="numeroCredito">
+      <mat-header-cell *matHeaderCellDef> Nº Crédito </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.numeroCredito }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="numeroNfse">
+      <mat-header-cell *matHeaderCellDef> Nº NFSe </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.numeroNfse }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dataConstituicao">
+      <mat-header-cell *matHeaderCellDef> Data da Constituição </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.dataConstituicao }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="valorIssqn">
+      <mat-header-cell *matHeaderCellDef> Valor ISSQN </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.valorIssqn }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tipoCredito">
+      <mat-header-cell *matHeaderCellDef> Tipo de Credito </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.tipoCredito }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="simplesNacional">
+      <mat-header-cell *matHeaderCellDef> Simples Nacional </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.simplesNacional }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="aliquota">
+      <mat-header-cell *matHeaderCellDef> Alíquota </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.aliquota }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="valorFaturado">
+      <mat-header-cell *matHeaderCellDef> Valor Faturado </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.valorFaturado }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="valorDeducao">
+      <mat-header-cell *matHeaderCellDef> Valor Dedução </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.valorDeducao }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="baseCalculo">
+      <mat-header-cell *matHeaderCellDef> Base Cálculo </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.baseCalculo }} </mat-cell>
+    </ng-container>
+
+    <!-- Adicione outras colunas conforme o mock -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <!-- Empty state -->
+  <div *ngIf="dataSource.data.length === 0" class="empty-state">
+    Nenhum resultado encontrado
+  </div>
+</div>
