@@ -30,9 +30,10 @@ export class SearchComponent {
   onSearch() {
   if (this.numeroNfse) {
       this.apiService.getByNfse(this.numeroNfse).subscribe({
-        next: (results: any[]) => {
-          if (results.length > 0) {
-            this.searchCompleted.emit(results[0]); // Envia o primeiro item do array
+        next: (results: CreditData[]) => {
+          const item = Array.isArray(results) ? results[0] : results; //Se a API pode mudar (às vezes retorna array, às vezes objeto):
+          if (item) {
+            this.searchCompleted.emit(item);
           } else {
             alert('Nenhum resultado encontrado!');
           }
@@ -43,9 +44,10 @@ export class SearchComponent {
       });
     } else if (this.numeroCredito) {
       this.apiService.getByCredito(this.numeroCredito).subscribe({
-        next: (results: any[]) => {
-          if (results.length > 0) {
-            this.searchCompleted.emit(results[0]);
+        next: (results: CreditData[]) => {
+          const item = Array.isArray(results) ? results[0] : results; //Se a API pode mudar (às vezes retorna array, às vezes objeto):
+          if (item) {
+            this.searchCompleted.emit(item);
           } else {
             alert('Nenhum resultado encontrado!');
           }

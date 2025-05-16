@@ -19,7 +19,6 @@ export class ResultsComponent {
 
   // Colunas exibidas na tabela
   displayedColumns: string[] = [
-    'id',
     'numeroCredito',
     'numeroNfse',
     'dataConstituicao',

@@ -6,16 +6,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:3000';  // URL do json-server
+  private apiUrl = 'http://localhost:8080/api';  // URL da API backend-creditos
 
   constructor(private http: HttpClient) { }
 
   getByNfse(numeroNfse: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/creditos?numeroNfse=${numeroNfse}`);
+    return this.http.get(`${this.apiUrl}/creditos/${numeroNfse}`);
   }
   
   getByCredito(numeroCredito: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/creditos?numeroCredito=${numeroCredito}`);
+    return this.http.get(`${this.apiUrl}/creditos/credito/${numeroCredito}`);
   }
   
 }

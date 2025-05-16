@@ -1,5 +1,4 @@
 export interface CreditData {
-  id: string;
   numeroCredito: string;
   numeroNfse: string;
   dataConstituicao: string;
