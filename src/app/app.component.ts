@@ -13,8 +13,8 @@ export class AppComponent {
   title = 'frontend-creditos';
   results: CreditData[] = [];
 
-  onSearchCompleted(result: CreditData) {
-    this.results = [result]; // Atualiza o array de resultados
+  onSearchCompleted(result: CreditData[]) {
+    this.results = result; // Atualiza o array de resultados
   }
 
 }
