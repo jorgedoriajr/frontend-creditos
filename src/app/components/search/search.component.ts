@@ -23,7 +23,7 @@ export class SearchComponent {
   errorMessage: string = '';
   loading: any;
 
-  @Output() searchCompleted = new EventEmitter<CreditData>(); // <-- Tipagem forte
+  @Output() searchCompleted = new EventEmitter<CreditData[]>(); // <-- Tipagem forte
 
   constructor(private apiService: ApiService) {} // ResultsComponent removido
 
@@ -31,9 +31,9 @@ export class SearchComponent {
   if (this.numeroNfse) {
       this.apiService.getByNfse(this.numeroNfse).subscribe({
         next: (results: CreditData[]) => {
-          const item = Array.isArray(results) ? results[0] : results; //Se a API pode mudar (às vezes retorna array, às vezes objeto):
-          if (item) {
-            this.searchCompleted.emit(item);
+          const array = Array.isArray(results) ? results : [results]; // força como array
+          if (array.length > 0) {
+            this.searchCompleted.emit(array); // ou array[0] se só quiser o primeiro
           } else {
             alert('Nenhum resultado encontrado!');
           }
@@ -45,9 +45,9 @@ export class SearchComponent {
     } else if (this.numeroCredito) {
       this.apiService.getByCredito(this.numeroCredito).subscribe({
         next: (results: CreditData[]) => {
-          const item = Array.isArray(results) ? results[0] : results; //Se a API pode mudar (às vezes retorna array, às vezes objeto):
-          if (item) {
-            this.searchCompleted.emit(item);
+          const array = Array.isArray(results) ? results : [results]; // força como array
+          if (array.length > 0) {
+            this.searchCompleted.emit(array); // ou array[0] se só quiser o primeiro
           } else {
             alert('Nenhum resultado encontrado!');
           }
