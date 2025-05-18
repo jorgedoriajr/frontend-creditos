@@ -45,5 +45,4 @@ http://localhost:4200/index.html
 docker-compose down -v
 ```
 ## 🙋 Author
-Jorge Viana Doria Junior
 Made by Jorge Viana Doria Junior
