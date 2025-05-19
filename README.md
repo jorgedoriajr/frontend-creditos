@@ -40,7 +40,7 @@ docker-compose up -d
 ```java
 http://localhost:4200/index.html
 ```
-5. Stop the project
+6. Stop the project
 ```java
 docker-compose down -v
 ```
