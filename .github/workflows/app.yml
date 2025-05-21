@@ -1,0 +1,53 @@
+name: Build and Test
+
+# Aqui contém o trigger da nossa pipeline:
+# ==============================================================================================
+# Nesse ponto:
+# 🔄 Sempre que houver um push na branch "master" ou quando um pull request for aberto/atualizado
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  # usada para conseguir executar a pipeline manualmente...
+  workflow_dispatch:
+
+# Aqui contém os jobs (steps) da pipeline, ou seja, os passos de Build em ordem numérica:
+# ==============================================================================================
+# 1. ⚙️ Usa o Ubuntu como ambiente de execução
+# 2. 📥 Fazer checkout do código
+# 3. ☕ Configurar o Instalar o Node.js v.20
+# 4. 📦 Instalar as dependências do package.json
+# 5. 🚀 Executar o build
+# 6. 🚀 Executar os teste se houver
+jobs:
+  build-and-test:
+    # 1. definir o Sistema Operacional que será utilizado
+    runs-on: ubuntu-latest
+
+    steps:
+      
+      # 2. Faz o git clone do repositório...
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      # 3. Instalar o Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      # 4. Instalar as dependências do package.json
+      - name: Install dependencies
+        run: npm ci
+
+      # 5. Build o projeto front-end
+      - name: Build project
+        run: npm run build
+      
+      # 6. Testa o projeto front-end
+      - name: Run tests
+        run: npm test
